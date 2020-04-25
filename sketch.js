@@ -13,6 +13,10 @@ var boxes = [];
 var ground;
 var gSlider;
 var box;
+var rand;
+var rand1;
+
+
  
 function setup() {
     createCanvas(400, 400);
@@ -29,24 +33,31 @@ function setup() {
     // Create a ground rectangle that would hold all the boxes and add it to the world.
 
 }
- 
+
+
+
+
 function mousePressed() {
     if (mouseY < 350) {
-        box = new Box(mouseX,mouseY,100,50);
+        rand =  Math.random(1)*100;
+        rand1 =  Math.random(1)*100;
+        box = new Box(mouseX,mouseY,rand,rand1);
+        
         boxes.push(box);
         // Every time a mouse press occures create a new box.
     }
     ground = new Ground(600,height,1200,20)
 }
- 
+
 function draw() {
+
     // Draw all the elements including the slider that 
     Engine.update(engine);
     background(51);
     // This is the value of your gravity. You can optionally show it to the viewer.
     var fVal = gSlider.value();
  
-
+    
 for(var i = 0;i<boxes.length;i=i+1){
     boxes[i].display();
 }    // Use a for loop to show all the boxes
